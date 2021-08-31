@@ -1,5 +1,7 @@
 import os
 import spotipy
+import sys
+from PySide6 import QtCore, QtWidgets, QtGui
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 
@@ -27,3 +29,20 @@ print(f"""CURRENTLY PLAYED SONG
 Artist: {artist_name}
 Album: {album_name}
 Song Title: {song_name}""")
+
+class MyWidget(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+        self.text = QtWidgets.QLabel(f"{artist_name}, {album_name}, {song_name}",
+                                     alignment=QtCore.Qt.AlignCenter)
+        self.layout = QtWidgets.QVBoxLayout(self)
+        self.layout.addWidget(self.text)
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
+
+    widget = MyWidget()
+    widget.resize(800, 600)
+    widget.show()
+
+    sys.exit(app.exec())
