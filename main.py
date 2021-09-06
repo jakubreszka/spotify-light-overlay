@@ -49,14 +49,27 @@ class SpotifyApp(QtWidgets.QWidget):
         pic = QtGui.QPixmap()
         pic.loadFromData(requests.get(album_cover).content)
         self.album_cov.setPixmap(pic)
+
+        self.button = QtWidgets.QPushButton("Next Song")
+        self.button.clicked.connect(self.play_next_song)
+
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.artist_text)
         self.layout.addWidget(self.song_text)
         self.layout.addWidget(self.album_text)
         self.layout.addWidget(self.album_cov)
+        self.layout.addWidget(self.button)
     
-    def refresh_timer():
+    @QtCore.Slot()
+    def play_next_song(self):
+        sp.next_track()
+
+    def get_current_song(self):
         pass
+
+    def refresh_timer(self):
+        pass
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
