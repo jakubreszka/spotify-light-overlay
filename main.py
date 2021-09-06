@@ -48,6 +48,9 @@ class SpotifyApp(QtWidgets.QWidget):
         self.layout.addWidget(self.artist_text)
         self.layout.addWidget(self.song_text)
         self.layout.addWidget(self.album_text)
+    
+    def refresh_timer():
+        pass
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
