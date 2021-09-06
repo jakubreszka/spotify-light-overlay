@@ -42,12 +42,18 @@ class SpotifyApp(QtWidgets.QWidget):
                                      alignment=QtCore.Qt.AlignCenter)
         self.album_text = QtWidgets.QLabel(f"Song: {album_name}",
                                      alignment=QtCore.Qt.AlignCenter)
-        pic = QtGui.QImage().loadFromData(requests.get(album_cover).content)
-        self.lbl = QtWidgets.QLabel(pic)
+        #pic = QtGui.QImage().loadFromData(requests.get(album_cover).content)
+        
+        #self.lbl = QtWidgets.QLabel()
+        self.album_cov = QtWidgets.QLabel()
+        pic = QtGui.QPixmap()
+        pic.loadFromData(requests.get(album_cover).content)
+        self.album_cov.setPixmap(pic)
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.addWidget(self.artist_text)
         self.layout.addWidget(self.song_text)
         self.layout.addWidget(self.album_text)
+        self.layout.addWidget(self.album_cov)
     
     def refresh_timer():
         pass
